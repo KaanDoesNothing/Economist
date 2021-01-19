@@ -23,7 +23,7 @@ module.exports = class extends Event {
       const oldRoles = oldMember.roles.cache.map(x => `${x.id}${x.name}`).join(";")
       const newRoles = newMember.roles.cache.map(x => `${x.id}${x.name}`).join(";")
       if (oldRoles != newRoles) {
-        await this.client.users.cache.get(newMember.id).settings.set(`persist`, newRoles);
+        await this.client.users.cache.get(newMember.id).settings.set("persist", newRoles);
       };    
     }
 
