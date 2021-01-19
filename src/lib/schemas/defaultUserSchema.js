@@ -57,4 +57,4 @@ module.exports = KlasaClient.defaultUserSchema
         .add("xp", "integer", { default: 0, configurable: false  })
         .add("xpc", "integer", { default: 0, configurable: false  })
         .add("xplvl", "integer", { default: 0, configurable: false  })
-        )
+    )
