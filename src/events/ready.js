@@ -14,18 +14,17 @@ module.exports = class extends Event {
     }
 
     run(client) {
-      client.user.setPresence({
+      this.client.user.setPresence({
         activity: {
           name: `${client.guilds.cache['size']} servers | ~support to join our support server for free 💵 500`,
           type: 'WATCHING',
         },
         status: 'dnd'
       })	
-    //	console.log(client.commands.map(x => x.name).join(", "))
-      //console.log(client.guilds.cache.map(x => x.name).join(', '))
+
       console.log(`Logged in as ${client.user.tag}`);
-      client.guilds.cache.get(client.config.supportServer).members.fetch();
-      client.channels.cache.get(client.config.channels.ready).send({
+      this.client.guilds.cache.get(client.config.supportServer).members.fetch();
+      this.client.channels.cache.get(client.config.channels.ready).send({
         embed: new MessageEmbed()
         .setColor("RANDOM")
         .setDescription(`Successfully logged in; ${client.guilds.cache.size} guilds cached with ${client.users.cache.size} users.`)
