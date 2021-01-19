@@ -1,0 +1,11 @@
+{
+  "name": "Economist-rewrite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "github:discordjs/discord.js",
+    "klasa": "github:pengubot/klasa#stable"
+  }
+}
