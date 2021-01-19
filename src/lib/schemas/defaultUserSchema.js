@@ -1,6 +1,7 @@
 const { KlasaClient } = require("klasa");
 
 module.exports = KlasaClient.defaultUserSchema
+    .add("test", "any")
     .add("level", folder => folder
         .add("xp", "integer", { default: 0, configurable: false })
         .add("current", "integer", { default: 1, configurable: false })
@@ -33,7 +34,7 @@ module.exports = KlasaClient.defaultUserSchema
         .add("fsh", "string", { default: "0;0;0;0;0;0", configurable: false  })
         .add("hgs", "integer", { default: 0, configurable: false  })
         .add("infcs", "integer", { default: 0, configurable: false  })
-        // .add("mute", "object", { default: {  }, configurable: false  })
+        .add("mute", "any", { default: { }, configurable: false  })
         .add("nick", "string", { default: "", configurable: false  })
         .add("noComma", "integer", { default: 0, configurable: false  })
         .add("number", "string", { default: "", configurable: false  })
@@ -43,9 +44,9 @@ module.exports = KlasaClient.defaultUserSchema
         .add("pet", "string", { default: "", configurable: false  })
         .add("petbu", "string", { default: "1;1;1;1;1;1;1;1;1;1;1;1", configurable: false  })
         .add("petname", "string", { default: "pet", configurable: false  })
-        // .add("replacers", "object", { default: {  }, configurable: false  })
+        .add("replacers", "any", { default: { }, configurable: false  })
         .add("robc", "integer", { default: 0, configurable: false  })        
-        // .add("role", "object", { default: {  }, configurable: false  })
+        .add("role", "any", { default: { }, configurable: false  })
         .add("sentc", "integer", { default: 0, configurable: false  })
         .add("sgstc", "integer", { default: 0, configurable: false  })
         .add("spouse", "string", { default: "", configurable: false  })
