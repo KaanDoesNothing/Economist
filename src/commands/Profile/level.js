@@ -8,6 +8,6 @@ module.exports = class extends Command {
     }
     run(msg, [user = msg.author]) {
         const level = msg.author.settings.get("level.current");
-        return msg.sendMessage(`${user.tag}'s is lvl ${level}`);
+        return msg.sendMessage(`${user.tag} is lvl ${level}`);
     }
 }
