@@ -9,4 +9,10 @@ const client = new Client({
     owners: ["501710994293129216", "208948873433972737"]
 });
 
+client.on("ready", () => {
+    module.exports = client;
+
+    require("./website/server");
+});
+
 client.login(process.env.token || config.token);
