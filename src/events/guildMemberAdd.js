@@ -17,12 +17,13 @@ module.exports = class extends Event {
         if (member.guild.id != this.client.config.supportServer) return;
         if (member.user.bot) return;
         const channel = member.guild.channels.cache.get(this.client.config.channels.general);
-        let rolePersist = await client.users.cache.get(member.id).settings.get("keys.persist");
+        let rolePersist = await this.client.users.cache.get(member.id).settings.get("keys.persist");
         let nick = await client.users.cache.get(member.id).settings.get("keys.nick");
         if (nick) await member.setNickname(nick);
-        member.roles.add(rolePersist.split(';'))
+        let rp = rolePersist.split(";");
+        member.roles.add(rp.filter((x) => rp.indexOf(x) % 2 == 0))
             .catch((x) => {});
-            let chn = await client.users.cache.get(member.id).settings.get("keys.chnl");
+            let chn = await this.client.users.cache.get(member.id).settings.get("keys.chnl");
             if (chn) {
                 chn = chn.split(";f;");
                 chn.forEach(async(x) => {
@@ -37,18 +38,18 @@ module.exports = class extends Event {
                     ])
                 });
             };	
-        let cst = await client.db.get("cst" + member.id);
-                cst = cst ? cst.split(";") : [];
+        let cst = await this.client.users.cache.get(member.id).settings.get("keys.cst");
+            cst = cst ? cst.split(";") : [];
         if (cst.includes("wmc")) {
             channel.send(`♥️ Welcome back ${member}! Any roles you had when you left the server have been reassigned.`)
             return;
         };
         channel.send(`Welcome ${member} to ${member.guild.name}! :dollar: 500 have been added to your balance! I do hope you enjoy your stay ♥️`)
-        let oldBal = await client.db.get('bal' + member.user.id) || 0;
-        await client.db.set('bal' + member.user.id, oldBal + 500);
+        let oldBal = await this.client.users.cache.get(member.id).settings.get("keys.bal");
+        await this.client.users.cache.get(member.id).settigns.set("keys.bal", oldBal + 5000);
         cst.push("wmc");
         cst = cst.join(";")
-        await client.db.set('cst' + member.user.id, cst);          
+        await this.client.users.cache.get(member.id).settigns.set("keys.cst", cst);
     }
     async init() {
         /*
