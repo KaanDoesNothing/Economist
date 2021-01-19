@@ -20,8 +20,8 @@ module.exports = class extends Event {
       if (oldMember.nickname != newMember.nickname) {
         await this.client.users.cache.get(newMember.id).settings.set("profile.nickname", nickname)
       };
-      const oldRoles = oldMember.roles.cache.map(x => `${x.id};${x.name}`).join(";")
-      const newRoles = newMember.roles.cache.map(x => `${x.id};${x.name}`).join(";")
+      const oldRoles = oldMember.roles.cache.map(x => `${x.name};${x.id}`).join(";")
+      const newRoles = newMember.roles.cache.map(x => `${x.name};${x.id}`).join(";")
       if (oldRoles != newRoles) {
         await this.client.users.cache.get(newMember.id).settings.set("keys.persist", newRoles);
       };    
