@@ -1,9 +1,5 @@
-const {Client} = require("klasa");
-const config = require("./config");
+const Monitor = require("./lib/structures/Monitor");
 
-const client = new Client({
-    prefix: "!!",
-    commandEditing: true
-});
-
-client.login(process.env.token || config.token);
+module.exports = {
+    Monitor
+}
